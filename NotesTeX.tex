@@ -5,6 +5,21 @@
 
 \usepackage[math-style=ISO]{unicode-math}
 
+\usepackage{xcolor}
+\renewcommand{\emph}[1]{\textcolor{purple}{\textit{#1}}}
+% Too large line blank between neighboring lines.
+\setenumerate[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+\setitemize[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+\setdescription{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+\usepackage{xeCJK}
+\setCJKmainfont[BoldFont=SimHei]{SimSun}
+\setCJKfamilyfont{hei}{SimHei}
+\setCJKfamilyfont{kai}{KaiTi}
+\setCJKfamilyfont{fang}{FangSong}
+\newcommand{\hei}{\CJKfamily{hei}}
+\newcommand{\kai}{\CJKfamily{kai}}
+\newcommand{\fang}{\CJKfamily{fang}}
+
 \newcommand\Vect{\symbfup}
 \newcommand\Matr{\symbfit} % \matrix is defined in LaTeX2e kernel
 \newcommand\Tens{\symbfsfit}
@@ -30,7 +45,7 @@ Department of Engineering Physics
 	\input{chapter/epipolar_geometry.tex}
 	% \part{Image Processing}
 	% \input{chapter/low_level_processing}
-	\part{High-level Synthetic Algorithm}
-	\input{chapter/structure_from_motion.tex}
+	% \part{High-level Synthetic Algorithm}
+	% \input{chapter/structure_from_motion.tex}
 
 \end{document}
