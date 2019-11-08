@@ -1,0 +1,58 @@
+\section{LongSight Introduction}
+
+
+LongSight is project developed by Wenyin and Tingzhi who devoted to develop a system which is robust to handle different real scenes and reconstruct corresponding electronic point cloud.
+
+
+\begin{enumerate}
+    \item \textbf{Adopted Scheme}\\
+    现行方案是采用分布式系统，一个单片机对一个摄像头（未来可能一个 FPGA 对多个摄像头），对体模重建任务，六摄像头应该是个合理的估计。
+
+    分布式系统采用 nsq 作为消息传递机制。
+    \begin{itemize}
+        \item Github: https://github.com/nsqio/nsq
+        \item Official Website: https://nsq.io/
+    \end{itemize}
+
+
+
+    \item \textbf{Cases <= 4 Cameras}\\
+    4 个摄像头以下，推荐使用 PCI-E 转 USB 扩展卡接电脑台式机主机 PCI 插槽。
+    优点：
+    \begin{enumerate}
+        \item  支持 1600 万像素的摄像头，带宽比视频录像机单路高不少。
+        \item  成本低，不需要硬盘录像机，直接连 PC 上，程序可以同步处理。
+    \end{enumerate}
+
+    缺点：
+    \begin{enumerate}
+        \item 需要主机，移动不方便。
+        \item 摄像头数量达到 5 路以上不太建议使用这种方式，对动态场景 4 路摄像头大概率不够。
+    \end{enumerate}
+
+    成本：(PCI-e 转接头 100￥ + 1600 万像素摄像头 850 * 4) =3500 ￥，未计入主机。
+
+    \item \textbf{Cases > 4 Cameras}\\
+    5 个摄像头以上，基本排除其他可能，只能用录像机作为记录视频主要工具。这是我们第一步要考虑的情况。
+    优点：
+    \begin{enumerate}
+        \item 1. 记录视频的专业设备，单路带宽虽然有限 (800 万像素) 但很稳定，不容易掉帧。
+        \item 2. 不管多少路都可以支持。
+    \end{enumerate}
+
+    
+    缺点：
+    \begin{enumerate}
+        \item 1. 需要新购录像机 2000￥。
+        \item 2. 不同厂商的硬盘录像机系统不大一样，用网线进行和 PC 的连接之后可以有线下载视频文件到本地进行处理。
+        \href{https://iask.sina.com.cn/b/6gqyGEWCCKd.html}{硬盘录像机设置怎么才能跟电脑连接？}
+    \end{enumerate}
+
+    成本：八类网线 40￥ + Type-C 转万兆网卡 129￥ + 录像机+八路800万像素摄像头约计 6000￥，总成本估计 6500￥ 以内
+
+    \item \textbf{Official Solution}\\   
+    海康的机器视觉团队也有自己做的多路方案，产品展示有一张图片出现过，需要用到二次开发，我接下来会进一步调研。
+    \href{https://www.hikvision.com/cn/download_61.html}{海康视觉的 SDK 开发套件}
+    \href{https://www.hikrobotics.com/vision/visionlist.htm}{海康机器视觉官网}
+\end{enumerate}
+
